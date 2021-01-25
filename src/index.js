@@ -19,13 +19,13 @@ function createElement(tagName, props, ...children) {
   return element;
 }
 
-function render(count = 0) {
-  function handleClick(plusNum) {
-    render(plusNum + 1);
+function render({ count }) {
+  function handleClick() {
+    render({ count: count + 1 });
   }
 
-  function handleClickNumber(number) {
-    render(number);
+  function handleClickNumber(value) {
+    render({ count: value });
   }
 
   const element = (
@@ -52,4 +52,8 @@ function render(count = 0) {
   document.getElementById('app').appendChild(element);
 }
 
-render();
+render(
+  {
+    count: 0,
+  }
+);
